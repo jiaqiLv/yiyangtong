@@ -1,0 +1,572 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Jujialaorenfuwuxitong</name>
+    </assembly>
+    <members>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.BaseApiController.#ctor">
+            <summary>
+            构造函数赋值
+            </summary>
+        </member>
+        <member name="P:Jujialaorenfuwuxitong.Controllers.BaseApiController.TokenValue">
+            <summary>
+            token值 登录后赋值请求api的时候添加到header中
+            </summary>
+        </member>
+        <member name="P:Jujialaorenfuwuxitong.Controllers.BaseApiController.LoginID">
+            <summary>
+            登录者账号
+            </summary>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.CommunityController">
+            <summary>
+            社区表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.CommunityController.Get">
+            <summary>
+            获取社区全部信息
+            </summary>
+            <returns>社区信息，包括社区ID、社区名、社区地址，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.CommunityController.GetbyName(System.String)">
+            <summary>
+            由社区名获取社区信息
+            </summary>
+            <param name="name">社区名</param>
+            <returns>社区信息，包括社区ID、社区名、社区地址，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.CommunityController.GetbyID(System.String)">
+            <summary>
+            由社区ID获取社区信息
+            </summary>
+            <param name="id">社区ID</param>           
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.CommunityController.Post(System.Object)">
+            <summary>
+            添加一个社区
+            </summary>
+            <param name="obj">社区信息
+            示例：
+            {
+             "name":"",
+             "city":"上海",
+             "block":"嘉定区",
+            }</param>
+            <returns>添加成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.CommunityController.DeleteByID(System.String)">
+            <summary>
+            由社区ID删除社区
+            </summary>
+            <param name="ID">社区ID</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.DiseaseController">
+            <summary>
+            疾病表的数据
+            </summary>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.DoctorController">
+            <summary>
+            医生表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.Get">
+            <summary>
+            获取医生表所有信息
+            </summary>
+            <returns>医生信息的所有信息，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.GetByPhone(System.String)">
+            <summary>
+            检验手机号是否有注册医生
+            </summary>
+            <param name="phonenumber"></param>
+            <returns>true或者false</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.GetByID(System.String,System.String)">
+            <summary>
+            通过社区ID或医生ID筛选医生信息
+            </summary>
+            <param name="communityid">社区id（可为空）</param>
+            <param name="doctorid">医生id（可为空）</param>
+            <returns>医生信息，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.Post(System.Object)">
+            <summary>
+            添加一个医生
+            </summary>
+            <param name="obj">医生信息，包含除了id外的所有医生信息,
+            示例：{"name":"老叶", "pwd":"12345","idcardno":"(18位)",
+            "age":"40","phone":"133","field":"神经外科","history":"市第一医院工作十年","gender":"男",
+            "communityid":"(请查看community表数据，communityid需要在community表中存在)",}
+            </param>
+            <returns>添加成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.Put(System.String,System.Object)">
+            <summary>
+            由医生id修改该医生的信息
+            </summary>
+            <param name="id">医生id(params传参)</param>
+            <param name="obj">医生信息，包含除了id外的所有医生信息，若一项为空则会删除该项原有信息,
+            示例：{"name":"老叶", "pwd":"12345","idcardno":"(18位)",
+            "age":"40","phone":"133","field":"神经外科","history":"市第一医院工作十年",
+            "communityid":"(请查看community表数据，communityid需要在community表中存在)","gender":"男","bantime":"",}
+             </param>
+            <returns>修改成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.Delete(System.String)">
+            <summary>
+            由医生id删除该医生的信息
+            </summary>
+            <param name="id">医生id</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.DoctorController.PostPhoto(System.String)">
+            <summary>
+            给医生上传头像
+            </summary>
+            <param name="id">医生id</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.ElderController">
+            <summary>
+            老人表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ElderController.Get(System.String)">
+            <summary>
+            获取指定id的老人数据
+            </summary>
+            <param name="id">老人id</param>
+            <returns>老人数据，错误时返回错误信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ElderController.GetById(System.String)">
+            <summary>
+            获取指定id的老人数据
+            </summary>
+            <param name="id">请求老人的id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ElderController.Post(System.Object)">
+            <summary>
+            增加新的老人
+            </summary>
+            <param name="obj">密码，名字，身份证号，性别，年龄，电话，身高，体重，住址，紧急电话，自理情况，社区id
+            {"pwd":"","name":"","idcardno":"","gender":"","age":"","phone":"",
+            "height":"","weight":"","address":"","urgent":"","situation":"","communityid":""}</param>
+            <returns>增加成功或失败,失败时附带错误信息,成功返回添加的信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ElderController.PostPhoto(System.String)">
+            <summary>
+            添加老人照片
+            </summary>
+            <param name="id">添加的老人id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.EvaluationController.Put(System.String,System.Object)">
+            <summary>
+            更新某条评论内容
+            </summary>
+            <param name="id">要更新的评论id</param>
+            <param name="obj">时间，评分，评价(为空则删除该项数据)
+            {"time":"1900-01-01 00:00:00","grade":'5',"message":""}</param>
+            <returns>成功或失败,失败时附带错误信息,成功返回修改后的信息</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.FollowController">
+            <summary>
+            关注表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.FollowController.GetFollowing(System.String)">
+            <summary>
+            获取某位用户关注的所有用户ID
+            </summary>
+            <param name="followerID">关注者的用户ID</param>
+            <returns>关注列表，错误时返回错误信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.FollowController.GetFollower(System.String)">
+            <summary>
+            获取关注某位用户的所有用户ID
+            </summary>
+            <param name="followingID">被关注者的用户ID</param>
+            <returns>粉丝列表，错误时返回错误信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.FollowController.Post(System.Object)">
+            <summary>
+            增加新的 被关注者-关注者
+            </summary>
+            <param name="obj">被关注者ID，关注者ID</param>
+            {"FOLLOWINGID":"", "FOLLOWERID":""}
+            <returns>增加成功或失败，失败时附带错误信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.InstitutionController.Post(System.Object)">
+            <summary>
+            新增机构
+            </summary>
+            <param name="obj">机构信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ManagerController.Post(System.Object)">
+            <summary>
+            新增管理员
+            </summary>
+            <param name="obj">管理员信息
+            示例：
+            "ID":"12300",
+            "name":"lucky_",
+            "pwd":"1",
+            "idCardNo":"2",
+            "gender":"male",
+            "age":"18",
+            "phone":"110",
+            "position":"leader"
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.NursingWorkerController.Post(System.Object)">
+            <summary>
+            增加新的护士
+            </summary>
+            <param name="obj">密码，姓名，身份证，性别，年龄，电话，简介照片，用户状态，机构id
+            {"pwd":"","name":"","idcardno":"","gender":"","age":"","phone":"",
+            "description":"","photo":"","userstatus":"","institutionid":""}</param>
+            <returns>增加成功或失败,失败时附带失败信息，成功返回添加的信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.NursingWorkerController.PostPhoto(System.String)">
+            <summary>
+            添加护士照片
+            </summary>
+            <param name="id">护士id</param>
+            <returns></returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.HealthReportController">
+            <summary>
+            健康报告表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.Get">
+            <summary>
+            获取所有的健康报告表信息
+            </summary>
+            <returns>健康报告记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.GetByCommunity(System.String)">
+            <summary>
+            由社区ID获取该社区中老人所有的健康报告记录的简易信息
+            </summary>
+            <param name="communityid">社区ID</param>
+            <returns>健康报告记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.GetByElder(System.String)">
+            <summary>
+            由老人ID获取该老人所有的健康报告记录的简易信息
+            </summary>
+            <param name="elderid">老人ID</param>
+            <returns>健康报告记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.GetByReport(System.String)">
+            <summary>
+            由报告ID获取该报告中的详细健康报告信息与老人信息
+            </summary>
+            <param name="reportid">报告ID(18位)</param>
+            <returns>详细服务报告信息，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.Post(System.Object)">
+            <summary>
+            增加新的健康报告信息
+            </summary>
+            <param name="obj">健康报告数据，
+            示例：{"doctorid":"(请查看doctor表数据，doctorid需要在doctor表中存在)", 
+            "elderid":"(请查看elder表数据，elderid需要在elder表中存在)","rate":"70",
+            "pressure":"121","healthassess":"身体不错","advice":"多喝水","historyassess":"有好转",
+            "status":"正在编辑",}
+            </param>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.Put(System.String,System.Object)">
+            <summary>
+            更新指定id的健康报告
+            </summary>
+            <param name="reportid">要更新的健康报告id</param>
+            <param name="obj">健康报告数据
+            示例：{"rate":"79","pressure":"121","healthassess":"有问题","advice":"多喝水",
+            "historyassess":"有好转","status":"已提交",}（不填则将原数据置为空）
+            </param>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HealthReportController.Delete(System.String)">
+            <summary>
+            由报告ID删除报告
+            </summary>
+            <param name="reportID">报告ID,18位</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.HistoryDiseaseController">
+            <summary>
+            历史疾病表的数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HistoryDiseaseController.GetbyElder">
+            <summary>
+            获取既往病史表所有信息
+            </summary>
+            <returns>老人历史疾病列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HistoryDiseaseController.GetbyElder(System.String)">
+            <summary>
+            由老人ID获取老人既往病史
+            </summary>
+            <param name="elderid">老人ID，18位</param>
+            <returns>老人历史疾病列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HistoryDiseaseController.Post(System.String,System.String,System.String)">
+            <summary>
+            添加一条历史疾病记录
+            </summary>
+            <param name="elderid">老人id</param>
+            <param name="diseasename">疾病名（需要在数据库的疾病表中存在）</param>
+            <param name="starttime">疾病开始时间，示例："2020-7"</param>
+            <returns>添加成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.HistoryDiseaseController.Delete(System.String,System.String)">
+            <summary>
+            由疾病ID和老人ID删除历史疾病记录
+            </summary>
+            <param name="diseaseID">疾病ID,18位</param>
+            <param name="elderID">老人ID,18位</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.MedicalRecordController">
+            <summary>
+            医疗服务表数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.Get">
+            <summary>
+            获取服务记录表中所有信息
+            </summary>
+            <returns>服务记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.GetByDoctor(System.String,System.Int32)">
+            <summary>
+            由医生ID获取该医生所有的服务记录
+            </summary>
+            <param name="doctorID">医生ID</param>
+            <param name="status">服务状态，0表示“未受理”（同时优先级最高）；1表示“已受理”（包括“进行中”和“已完成”）</param>
+            <returns>医生服务记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.GetByDoctor2(System.String)">
+            <summary>
+            由医生ID获取该医生所有的服务评价信息
+            </summary>
+            <param name="doctorID">医生ID</param>
+            <returns>医生评价信息列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.GetByElder(System.String)">
+            <summary>
+            由老人ID获取该老人所有的服务记录
+            </summary>
+            <param name="elderID">老人ID,18位</param>
+            <returns>老人服务记录列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.GetByElder2(System.String)">
+            <summary>
+            由老人ID获取该老人所有的服务评价信息
+            </summary>
+            <param name="elderID">老人ID,18位</param>
+            <returns>老人评价信息列表，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.Post(System.Object)">
+            <summary>
+            增加新的服务记录信息,并添加一条新订单
+            </summary>
+            <param name="obj">
+            服务记录信息数据，
+            
+            示例：{"doctorid":["请查看doctor表数据，doctorid需要在doctor表中存在","**"],
+            "elderid":"(请查看elder表数据，elderid需要在elder表中存在)","address":"05号楼315室",
+            "starttime":"2020-09-10 13:00","endtime":"2020-10-10 15:00", "timeslot":"上午",
+            "evalustatus":"未评价","status":"未受理","orderstatus":"未支付","method":"上门现付","money":"10",}
+            </param>
+            <returns>增加成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.PutStatus(System.String,System.String)">
+            <summary>
+            更新指定服务记录的服务状态
+            </summary>
+            <param name="serviceid">要更新的服务记录id，18位</param>
+            <param name="status">更新后的状态，示例：进行中</param>
+            <returns>更新成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.PutOrder(System.String,System.String,System.String)">
+            <summary>
+            改变支付状态或支付方式
+            </summary>
+            <param name="serviceid">要改变的服务id</param>
+            <param name="method">改变后的支付方式（空则不改变）</param>
+            <param name="orderstatus">改变后的支付状态（空则不改变）</param>
+            <returns>更新成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.PutAgree(System.String)">
+            <summary>
+            点击同意后，更新服务状态为'进行中'，并删除相同服务id的其他服务记录
+            </summary>
+            <param name="serviceid">要更新的服务记录id</param>
+            <returns>更新成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.PutEvaluation(System.String,System.String)">
+            <summary>
+            评价后更新对应服务记录为已评价
+            </summary>
+            <param name="serviceid">要更新的服务记录id，18位</param>
+            <param name="evaluationid">服务记录对应评价ID，25位，来自于evaluation表post后的返回值</param>
+            <returns>更新成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.Delete(System.String)">
+            <summary>
+            拒绝时，由服务ID删除一条优先级最高的服务记录，并把其他服务记录提高一个优先级
+            </summary>
+            <param name="serviceID">服务ID</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.MedicalRecordController.DeleteAll(System.String)">
+            <summary>
+            撤回申请，删除所有服务记录
+            </summary>
+            <param name="serviceID">服务ID</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.QualifacationController">
+            <summary>
+            资质表的数据
+            </summary>
+        </member>
+        <member name="T:Jujialaorenfuwuxitong.Controllers.RoomController">
+            <summary>
+            会议室数据
+            </summary>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.Get">
+            <summary>
+            获取所有会议信息
+            </summary>
+            <returns>会议信息，包括会议ID、开始时间、结束时间、密码、医生id，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.GetByCommunity(System.String)">
+            <summary>
+            由社区ID获取社区中未结束的所有会议信息（会议结束时间迟于当前时间）
+            </summary>
+            <param name="communityid">社区id，18位</param>
+            <returns>会议信息，包括会议ID、开始时间、结束时间、密码、医生id，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.GetByDoctor(System.String)">
+            <summary>
+            由医生ID获取该医生未结束的所有会议信息（会议结束时间迟于当前时间）
+            </summary>
+            <param name="doctorid">医生id,18位</param>
+            <returns>会议信息，包括会议ID、开始时间、结束时间、密码、医生id，json数据</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.GetByRoom(System.String)">
+            <summary>
+            由会议ID返回会议信息和医生信息
+            </summary>
+            <param name="roomid">会议id,18位</param>
+            <returns>会议信息</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.Post(System.Object)">
+            <summary>
+            添加一个会议室
+            </summary>
+            <param name="obj">会议室信息
+            示例：
+            {
+             "starttime":"2020-07-01 13:00",
+             "endtime":"2020-07-01 15:00",
+             "roomid":"123456789",
+             "password":"123456",
+             "doctorid":"(请查看doctor表数据，doctorid需要在doctor表中存在)",
+            }
+            </param>
+            <returns>添加成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.RoomController.Delete(System.String)">
+            <summary>
+            由会议ID删除会议
+            </summary>
+            <param name="roomID">会议ID,18位</param>
+            <returns>删除成功或失败</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Controllers.ServiceRecordController.PutOrder(System.String)">
+            <summary>
+            修改订单状态为已支付
+            </summary>
+            <param name="recordid">记录id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.Base64Helper.Base64Encode(System.String)">
+            <summary>
+            Base64加密，采用utf8编码方式加密
+            </summary>
+            <param name="source">待加密的明文</param>
+            <returns>加密后的字符串</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.Base64Helper.Base64Encode(System.Text.Encoding,System.String)">
+            <summary>
+            Base64加密
+            </summary>
+            <param name="encodeType">加密采用的编码方式</param>
+            <param name="source">待加密的明文</param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.Base64Helper.Base64Decode(System.String)">
+            <summary>
+            Base64解密，采用utf8编码方式解密
+            </summary>
+            <param name="result">待解密的密文</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.Base64Helper.Base64Decode(System.Text.Encoding,System.String)">
+            <summary>
+            Base64解密
+            </summary>
+            <param name="encodeType">解密采用的编码方式，注意和加密时采用的方式一致</param>
+            <param name="result">待解密的密文</param>
+            <returns>解密后的字符串</returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.StreamHelp.StreamToFile(System.IO.Stream,System.String)">
+            <summary>
+            流转文件
+            </summary>
+            <param name="stream"></param>
+            <param name="fileName"></param>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.StreamHelp.FileToStream(System.String)">
+            <summary>
+            文件转流
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.StreamHelp.StreamToBytes(System.IO.Stream)">
+            <summary>
+            流转Bytes
+            </summary>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Jujialaorenfuwuxitong.Models.StreamHelp.BytesToStream(System.Byte[])">
+            <summary>
+            Bytes转流
+            </summary>
+            <param name="bytes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:API.App_Start.CachingSwaggerProvider.GetControllerDesc">
+            <summary>
+            从API文档中读取控制器描述
+            </summary>
+            <returns>所有控制器描述</returns>
+        </member>
+    </members>
+</doc>
